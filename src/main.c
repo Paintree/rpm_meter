@@ -15,5 +15,4 @@ void main () {
         gpioToggle(&PORTB, PB5);
         _delay_ms(1000);
     }
-
 }

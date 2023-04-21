@@ -18,10 +18,6 @@ void gpioInit(volatile uint8_t *ddr, volatile uint8_t *port, uint8_t pin, PinDir
 void gpioWrite(volatile uint8_t *port, uint8_t pin, PinState state);
 void gpioToggle(volatile uint8_t *port, uint8_t pin);
 PinState gpioRead(volatile uint8_t *port, uint8_t pin);
-
-
-
-
-
+uint16_t gpioAnalogRead(uint8_t channel);
 
 #endif // GPIO_H
