@@ -1,16 +1,19 @@
-#include <avr/io.h>
+#define F_CPU 16000000UL
+#ifndef __AVR_ATmega328P__
+#define __AVR_ATmega328P__
+#endif
+
 #include <util/delay.h>
+
+#include "gpio.h"
 
 void main () {
 
-    // Blink Led
-    DDRB = DDRB | (1<<DDB5);
+    gpioInit(&DDRB, &PORTB, PB5, OUTPUT);
     
     while(1) {
-        PORTB = PORTB | (1 << PORTB5);
-        _delay_ms(1000);
-        PORTB = PORTB & ~(1 << PORTB5);
+        gpioToggle(&PORTB, PB5);
         _delay_ms(1000);
     }
-    
+
 }
