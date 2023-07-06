@@ -5,9 +5,17 @@ PROJECT_DIR = ${shell pwd}
 BUILD_DIR = ${PROJECT_DIR}/build
 AVR_TOOLS_PATH = /usr/bin/avrdude
 PROGRAMMER = arduino
+
+#################### Arduino UNO
 MCU = atmega328p
 PORT = /dev/ttyACM0
 BAUD_RATE = 115200
+
+#################### Arduino PRO mini
+# MCU = m328p
+# PORT = /dev/ttyUSB0
+# BAUD_RATE = 57600
+
 BINARY = $(BUILD_DIR)/$(TARGET)
 GREEN = \033[1;32m
 

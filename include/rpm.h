@@ -3,6 +3,7 @@
 
 #include <stdint.h>
 
-uint32_t getRPM();
+void initRPM();
+uint16_t getRPM();
 
 #endif // RPM_H

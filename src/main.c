@@ -16,9 +16,12 @@
 #define LCD_COLUMNS 20
 #define LCD_ROWS 4
 
+#define RPM_SPACE 13
+
 void main()
 {
-    char string[13] = {0};
+    initRPM();
+    char string[RPM_SPACE] = {0};
 
     gpioInit(&LED_DATA_DIRECTION, &LED_PORT, LED_PIN, OUTPUT);
     i2cInit(SCL_100);
@@ -35,10 +38,16 @@ void main()
     while (1)
     {
         lq_setCursor(&device, 1, 0);
-        strcpy(string, "");
+        sprintf(string, "");
         sprintf(string, "%d",getRPM());
+        uint8_t rem = strlen(string);
         lq_print(&device, string);
+        for (int i = 0; i < RPM_SPACE - rem; i++) {
+            lq_setCursor(&device, 1, i + rem);
+            lq_print(&device, " ");
+        }
 
         gpioToggle(&LED_PORT, LED_PIN);
+        _delay_ms(200);
     }
 }
